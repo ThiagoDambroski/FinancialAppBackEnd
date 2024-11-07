@@ -94,5 +94,16 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 	}
 	
 	
+	@ExceptionHandler(PagamentCategoryNotFoundException.class)
+	public ResponseEntity<ErrorMessage> pagamentCategoryNotFoundException(PagamentCategoryNotFoundException exception, WebRequest request){
+		
+		
+		ErrorMessage error = new ErrorMessage(HttpStatus.NOT_FOUND,exception.getMessage());
+		
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+		
+		
+	}
+	
 	
 }
