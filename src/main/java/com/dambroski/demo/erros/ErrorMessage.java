@@ -1,4 +1,4 @@
-package erros;
+package com.dambroski.demo.erros;
 
 import org.springframework.http.HttpStatus;
 

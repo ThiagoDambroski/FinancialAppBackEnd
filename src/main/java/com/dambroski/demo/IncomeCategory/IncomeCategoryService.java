@@ -12,4 +12,10 @@ public interface IncomeCategoryService {
 
 	void delete(Long incomeCategoryId);
 
+	IncomeCategory patchAddToIncome(Long incomeCategoryId, Long incomeId);
+
+	IncomeCategory patchAddToIncomePlan(Long incomeCategoryId, Long incomePlanId);
+
+	IncomeCategory patchRemoveFromIncome(Long incomeCategoryId, Long incomeId);
+
 }

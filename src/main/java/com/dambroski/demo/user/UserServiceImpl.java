@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dambroski.demo.account.Account;
-
-import erros.UserNotFoundException;
+import com.dambroski.demo.erros.UserNotFoundException;
 
 @Service
 public class UserServiceImpl implements UserService{

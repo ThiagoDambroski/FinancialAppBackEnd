@@ -36,6 +36,22 @@ public class IncomeCategoryController {
 	}
 	
 	
+	@PatchMapping("/patch/addToIncome/{incomeCategoryId}/{incomeId}")
+	public IncomeCategory patchAddToIncome(@PathVariable("incomeCategoryId") Long incomeCategoryId,@PathVariable("incomeId") Long incomeId) {
+			return service.patchAddToIncome(incomeCategoryId,incomeId);
+	}
+	
+	@PatchMapping("/patch/removeFromIncome/{incomeCategoryId}/{incomeId}")
+	public IncomeCategory patchRemoveFromIncome(@PathVariable("incomeCategoryId") Long incomeCategoryId,@PathVariable("incomeId") Long incomeId) {
+		return service.patchRemoveFromIncome(incomeCategoryId,incomeId);
+	}
+	
+	@PatchMapping("/patch/addToIncomePlan/{incomeCategoryId}/{incomePlanId}")
+	public IncomeCategory patchAddToIncomePlan(@PathVariable("incomeCategoryId") Long incomeCategoryId,@PathVariable("incomePlanId") Long incomePlanId) {
+		return service.patchAddToIncomePlan(incomeCategoryId,incomePlanId);
+	}
+	
+	
 	@DeleteMapping("delete/{incomeCategoryId}")
 	public void delete(@PathVariable("incomeCategoryId") Long incomeCategoryId) {
 		 service.delete(incomeCategoryId);

@@ -1,4 +1,4 @@
-package erros;
+package com.dambroski.demo.erros;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -102,6 +102,22 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 		
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
 		
+		
+	}
+	
+	@ExceptionHandler(PagamentImportanceNotFoundException.class)
+	public ResponseEntity<ErrorMessage> pagamentImportanceNotFoundException(PagamentImportanceNotFoundException exception,WebRequest request){
+		ErrorMessage error = new ErrorMessage(HttpStatus.NOT_FOUND,exception.getMessage());
+		
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+		
+	}
+	
+	@ExceptionHandler(CategoryNotInIncomeException.class)
+	public ResponseEntity<ErrorMessage> categoryNotInIncomeException(CategoryNotInIncomeException exception,WebRequest request){
+		ErrorMessage error = new ErrorMessage(HttpStatus.NOT_FOUND,exception.getMessage());
+		
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
 		
 	}
 	

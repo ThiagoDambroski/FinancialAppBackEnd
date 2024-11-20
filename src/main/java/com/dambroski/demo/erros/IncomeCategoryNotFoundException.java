@@ -1,4 +1,4 @@
-package erros;
+package com.dambroski.demo.erros;
 
 public class IncomeCategoryNotFoundException extends RuntimeException {
 

@@ -9,9 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.dambroski.demo.account.Account;
 import com.dambroski.demo.account.AccountRepository;
-
-import erros.AccountNotFoundException;
-import erros.InvestmentNotFoundException;
+import com.dambroski.demo.erros.AccountNotFoundException;
+import com.dambroski.demo.erros.InvestmentNotFoundException;
 
 @Service
 public class InvestmentServiceImpl implements InvestmentService {

@@ -11,10 +11,9 @@ import com.dambroski.demo.PagamentPlan.PagamentPlan;
 import com.dambroski.demo.PagamentPlan.PagamentPlanRepository;
 import com.dambroski.demo.account.Account;
 import com.dambroski.demo.account.AccountRepository;
+import com.dambroski.demo.erros.PagamentNotFoundException;
+import com.dambroski.demo.erros.PagamentPlanNotFoundException;
 import com.dambroski.demo.pagamentCategory.PagamentCategory;
-
-import erros.PagamentNotFoundException;
-import erros.PagamentPlanNotFoundException;
 
 
 @Service

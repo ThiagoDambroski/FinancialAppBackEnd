@@ -3,6 +3,7 @@ package com.dambroski.demo.pagamentCategory;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,4 +34,20 @@ public class PagamentCategoryController {
 	public PagamentCategory patchName(@RequestBody PagamentCategory pagamentCategory, @PathVariable("pagamentCategoryId") Long pagamentCategoryId ) {
 		return service.patchName(pagamentCategory,pagamentCategoryId);
 	}
+	
+	@PatchMapping("/patch/addToPagament/{pagamentCategoryId}/{pagamentId}")
+	public PagamentCategory addToPagament(@PathVariable("pagamentCategoryId") Long pagamentCategoryId,@PathVariable("pagamentId") Long pagamentId) {
+		return service.patchAddToPagament(pagamentCategoryId,pagamentId);
+	}
+	
+	@PatchMapping("/patch/addToPagamentPlan/{pagamentCategoryId}/{pagamentPlanId}")
+	public PagamentCategory addToPagamentPlan(@PathVariable("pagamentCategoryId") Long pagamentCategoryId,@PathVariable("pagamentPlanId") Long pagamentPlanId) {
+		return service.patchAddToPagamentPlan(pagamentCategoryId,pagamentPlanId);
+	}
+	
+	@DeleteMapping("/delete/{pagamentCategoryId")
+	public void delete(@PathVariable("pagamentCategoryId") Long pagamentCategoryId) {
+			service.delete(pagamentCategoryId);
+	}
+	
  }

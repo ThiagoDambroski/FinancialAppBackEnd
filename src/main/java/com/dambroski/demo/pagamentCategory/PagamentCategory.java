@@ -2,6 +2,7 @@ package com.dambroski.demo.pagamentCategory;
 
 import java.util.List;
 
+import com.dambroski.demo.PagamentPlan.PagamentPlan;
 import com.dambroski.demo.pagament.Pagament;
 
 import jakarta.persistence.Entity;
@@ -27,6 +28,9 @@ public class PagamentCategory {
 	
 	@ManyToMany(mappedBy = "categorys")
 	private List<Pagament> pagaments;
+	
+	@ManyToMany(mappedBy = "categorys")
+	private List<PagamentPlan> pagamentsPlan;
 	
 	
 

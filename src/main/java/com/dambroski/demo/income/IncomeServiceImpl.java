@@ -12,10 +12,9 @@ import com.dambroski.demo.IncomePlan.IncomePlan;
 import com.dambroski.demo.IncomePlan.IncomePlanRepository;
 import com.dambroski.demo.account.Account;
 import com.dambroski.demo.account.AccountRepository;
-
-import erros.AccountNotFoundException;
-import erros.IncomeNotFoundException;
-import erros.IncomePlanNotFoundException;
+import com.dambroski.demo.erros.AccountNotFoundException;
+import com.dambroski.demo.erros.IncomeNotFoundException;
+import com.dambroski.demo.erros.IncomePlanNotFoundException;
 
 @Service
 public class IncomeServiceImpl implements IncomeService{
