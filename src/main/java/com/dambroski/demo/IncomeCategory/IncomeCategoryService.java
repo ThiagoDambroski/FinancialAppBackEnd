@@ -18,4 +18,6 @@ public interface IncomeCategoryService {
 
 	IncomeCategory patchRemoveFromIncome(Long incomeCategoryId, Long incomeId);
 
+	IncomeCategory removeFromIncomePlan(Long incomeCategoryId, Long incomePlanId);
+
 }

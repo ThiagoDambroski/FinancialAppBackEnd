@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.dambroski.demo.PagamentPlan.PagamentPlan;
 import com.dambroski.demo.PagamentPlan.PagamentPlanRepository;
+import com.dambroski.demo.erros.CategoryNotInPagamentException;
 import com.dambroski.demo.erros.PagamentCategoryNotFoundException;
 import com.dambroski.demo.erros.PagamentNotFoundException;
 import com.dambroski.demo.pagament.Pagament;
@@ -62,7 +63,7 @@ public class PagamentCategoryServiceImpl implements PagamentCategoryService{
 				.orElseThrow(() -> new PagamentCategoryNotFoundException("Pagament Cateogory not found"));
 		
 		Pagament pagament = pagamentRepository.findById(pagamentId)
-				.orElseThrow(() -> new PagamentNotFoundException("Pagament not found exception"));
+				.orElseThrow(() -> new PagamentNotFoundException("Pagament not found"));
 		
 		List<Pagament> pagaments = pagamentCategory.getPagaments();
 		if(!pagaments.contains(pagament)) {
@@ -73,6 +74,27 @@ public class PagamentCategoryServiceImpl implements PagamentCategoryService{
 		
 		return repo.save(pagamentCategory);
 	}
+	
+	@Override
+	public PagamentCategory removeFromPagament(Long pagamentCategoryId, Long pagamentId) {
+		PagamentCategory pagamentCategory = repo.findById(pagamentCategoryId)
+				.orElseThrow(() -> new PagamentCategoryNotFoundException("Pagament Cateogory not found"));
+		
+		Pagament pagament = pagamentRepository.findById(pagamentId)
+				.orElseThrow(() -> new PagamentNotFoundException("Pagament not found"));
+		
+		List<Pagament> listPagament = pagamentCategory.getPagaments();
+		
+		if(!listPagament.contains(pagament)) {
+			throw new CategoryNotInPagamentException("Category not in pagament");
+		}
+		listPagament.remove(pagament);
+		
+		pagamentCategory.setPagaments(listPagament);
+		
+		return repo.save(pagamentCategory);
+	}
+
 	
 	@Override
 	public PagamentCategory patchAddToPagamentPlan(Long pagamentCategoryId, Long pagamentPlanId) {
@@ -91,7 +113,23 @@ public class PagamentCategoryServiceImpl implements PagamentCategoryService{
 		
 		return repo.save(pagamentCategory);
 	}
-	
+	@Override
+	public PagamentCategory removeFromPagamentPlan(Long pagamentCategoryId, Long pagamentPlanId) {
+		
+		PagamentCategory pagamentCategory = repo.findById(pagamentCategoryId)
+				.orElseThrow(() -> new PagamentCategoryNotFoundException("Pagament Category not found"));
+		
+		PagamentPlan pagamentPlan = pagamentPlanRepository.findById(pagamentPlanId)
+				.orElseThrow(() -> new PagamentCategoryNotFoundException("Pagament Category not found"));
+		
+		List<PagamentPlan> pagamentsPlan = pagamentCategory.getPagamentsPlan();
+		
+		if(!pagamentsPlan.contains(pagamentPlan)) {
+			///Todo
+		}
+		
+		return null;
+	}
 
 	@Override
 	public void delete(Long pagamentCategoryId) {
@@ -101,6 +139,9 @@ public class PagamentCategoryServiceImpl implements PagamentCategoryService{
 		repo.delete(pagamentCategory);
 	}
 
+	
+
+	
 	
 
 }

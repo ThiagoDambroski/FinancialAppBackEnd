@@ -122,4 +122,18 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 	}
 	
 	
+	@ExceptionHandler(CategoryNotInIncomePlanException.class)
+	public ResponseEntity<ErrorMessage> categoryNotInIncomePlanException(CategoryNotInIncomePlanException exception, WebRequest request){
+		ErrorMessage error = new ErrorMessage(HttpStatus.NOT_FOUND,exception.getMessage());
+		
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+	}
+	
+	@ExceptionHandler(CategoryNotInPagamentException.class)
+	public ResponseEntity<ErrorMessage> categoryNotInPagamentException(CategoryNotInPagamentException exception, WebRequest request){
+		ErrorMessage error = new ErrorMessage(HttpStatus.NOT_FOUND,exception.getMessage());
+		
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+	}
+	
 }

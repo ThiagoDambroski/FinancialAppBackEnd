@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.dambroski.demo.IncomePlan.IncomePlan;
 import com.dambroski.demo.IncomePlan.IncomePlanRepository;
 import com.dambroski.demo.erros.CategoryNotInIncomeException;
+import com.dambroski.demo.erros.CategoryNotInIncomePlanException;
 import com.dambroski.demo.erros.IncomeCategoryNotFoundException;
 import com.dambroski.demo.erros.IncomeNotFoundException;
 import com.dambroski.demo.erros.IncomePlanNotFoundException;
@@ -123,6 +124,28 @@ public class IncomeCategoryServiceImpl implements IncomeCategoryService{
 	}
  
 	
+	@Override
+	public IncomeCategory removeFromIncomePlan(Long incomeCategoryId, Long incomePlanId) {
+		IncomeCategory incomeCategory = repository.findById(incomeCategoryId)
+				.orElseThrow(() -> new IncomeCategoryNotFoundException("Income Category not found"));
+		IncomePlan incomePlan = incomePlanRepo.findById(incomePlanId)
+				.orElseThrow(() -> new IncomePlanNotFoundException("Income Plan not found"));
+		
+		List<IncomePlan> incomePlanList = incomeCategory.getIncomesplans();
+		
+		if(!incomePlanList.contains(incomePlan)) {
+			throw new CategoryNotInIncomePlanException("income Category, no in income plan");
+		}
+		
+		incomePlanList.remove(incomePlan);
+		
+		incomeCategory.setIncomesplans(incomePlanList);
+		
+		
+		
+		return repository.save(incomeCategory);
+	}
+	
 	
 
 	@Override
@@ -133,6 +156,9 @@ public class IncomeCategoryServiceImpl implements IncomeCategoryService{
 		repository.delete(incomeCategory);
 		
 	}
+
+
+	
 
 
 	

@@ -40,10 +40,21 @@ public class PagamentCategoryController {
 		return service.patchAddToPagament(pagamentCategoryId,pagamentId);
 	}
 	
+	@PatchMapping("/patch/removeFromPagament/{pagamentCategoryId}/{pagamentId}")
+	public PagamentCategory removeFromPagament(@PathVariable("pagamentCategoryId")Long pagamentCategoryId,@PathVariable("pagamentId") Long pagamentId) {
+		return service.removeFromPagament(pagamentCategoryId,pagamentId);
+	}
+	
 	@PatchMapping("/patch/addToPagamentPlan/{pagamentCategoryId}/{pagamentPlanId}")
 	public PagamentCategory addToPagamentPlan(@PathVariable("pagamentCategoryId") Long pagamentCategoryId,@PathVariable("pagamentPlanId") Long pagamentPlanId) {
 		return service.patchAddToPagamentPlan(pagamentCategoryId,pagamentPlanId);
 	}
+	
+	@PatchMapping("/patch/removeFromPagamentPlan/{pagamentCategoryId}/{pagamentPlanId}")
+	public PagamentCategory removeFromPagamentPlan(@PathVariable("pagamentCategoryId")Long pagamentCategoryId, @PathVariable("pagamentPlanId")Long pagamentPlanId) {
+		return service.removeFromPagamentPlan(pagamentCategoryId,pagamentPlanId);
+	}
+	
 	
 	@DeleteMapping("/delete/{pagamentCategoryId")
 	public void delete(@PathVariable("pagamentCategoryId") Long pagamentCategoryId) {

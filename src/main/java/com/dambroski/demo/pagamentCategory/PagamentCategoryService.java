@@ -15,4 +15,8 @@ public interface PagamentCategoryService {
 	void delete(Long pagamentCategoryId);
 
 	PagamentCategory patchAddToPagamentPlan(Long pagamentCategoryId, Long pagamentPlanId);
+
+	PagamentCategory removeFromPagament(Long pagamentCategoryId, Long pagamentId);
+
+	PagamentCategory removeFromPagamentPlan(Long pagamentCategoryId, Long pagamentPlanId);
 }
